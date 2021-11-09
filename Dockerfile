@@ -9,7 +9,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install essential Ubuntu packages
 # and upgrade pip
-RUN apt-get update &&\
+RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y build-essential && \
     apt-get install -y software-properties-common \
     build-essential \
     git \
@@ -43,6 +45,7 @@ RUN pip3 --no-cache-dir install \
     scipy \
     pandas \
     jupyter \
+    jupyterlab \
     scikit-learn \
     scikit-image \
     seaborn \
@@ -50,6 +53,7 @@ RUN pip3 --no-cache-dir install \
     h5py \
     gitpython \
     Pillow
+
 RUN pip3 --no-cache-dir install \
     torch==1.9.1+cu111 \
     torchvision==0.10.1+cu111 \
