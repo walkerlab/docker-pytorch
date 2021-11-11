@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 LABEL maintainer="Edgar Y. Walker <edgar.walker@gmail.com>"
 
 # Deal with pesky Python 3 encoding issue
@@ -55,10 +55,10 @@ RUN pip3 --no-cache-dir install \
     Pillow
 
 RUN pip3 --no-cache-dir install \
-    torch==1.9.1+cu111 \
-    torchvision==0.10.1+cu111 \
-    torchaudio===0.9.1 \
-    -f https://download.pytorch.org/whl/torch_stable.html
+    torch==1.10.0+cu113 \
+    torchvision==0.11.1+cu113 \
+    torchaudio===0.10.0+cu113 \
+    -f https://download.pytorch.org/whl/cu113/torch_stable.html
 
 RUN pip3 --no-cache-dir install git+https://github.com/atlab/datajoint-python.git@main
 
