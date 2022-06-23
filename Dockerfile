@@ -52,15 +52,13 @@ RUN pip3 --no-cache-dir install \
     graphviz \
     h5py \
     gitpython \
-    Pillow
+    Pillow \
+    datajoint
 
 
 RUN pip3 --no-cache-dir install \
     torch torchvision torchaudio \
     --extra-index-url https://download.pytorch.org/whl/cu113
-
-
-RUN pip3 --no-cache-dir install git+https://github.com/atlab/datajoint-python.git@main
 
 # Export port for Jupyter Notebook
 EXPOSE 8888
