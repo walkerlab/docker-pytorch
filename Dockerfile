@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.7.0-devel-ubuntu22.04
+FROM nvidia/cuda:11.2.1-devel-ubuntu20.04
 LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>"
 
 # Deal with pesky Python 3 encoding issue
