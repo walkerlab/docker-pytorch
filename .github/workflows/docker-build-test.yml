@@ -17,12 +17,15 @@ jobs:
         include:
         - CUDA_VER: 10.2
           UBUNTU_VER: 18.04
+          PLATFORMS: linux/amd64
         - CUDA_VER: 11.3.1
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
+          PLATFORMS: linux/amd64,linux/arm64
         - CUDA_VER: 11.6.1
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
+          PLATFORMS: linux/amd64,linux/arm64
     runs-on: ubuntu-latest
 
     steps:
@@ -61,7 +64,7 @@ jobs:
             CUDA_VER=${{ matrix.CUDA_VER }}
             PYTORCH_EXTRA_IDX_URL=${{ matrix.PYTORCH_EXTRA_IDX_URL }}
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ matrix.PLATFORMS }}
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
