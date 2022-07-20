@@ -14,12 +14,14 @@ jobs:
   docker:
     strategy:
       matrix:
-        UBUNTU_VER: [20.04, 22.04]
         include:
         - CUDA_VER: 10.2
+          UBUNTU_VER: 18.04
         - CUDA_VER: 11.3.1
+          UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
         - CUDA_VER: 11.6.1
+          UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
     runs-on: ubuntu-latest
 
