@@ -1,4 +1,8 @@
-FROM nvidia/cuda:11.7.0-devel-ubuntu22.04
+ARG UBUNTU_VER
+ARG CUDA_VER
+ARG PYTORCH_EXTRA_IDX_URL
+
+FROM nvidia/cuda:${CUDA_VER}-devel-ubuntu${UBUNTU_VER}
 LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>"
 
 # Deal with pesky Python 3 encoding issue
@@ -55,10 +59,9 @@ RUN pip3 --no-cache-dir install \
     Pillow \
     datajoint
 
-
-RUN pip3 --no-cache-dir install \
-    torch torchvision torchaudio \
-    --extra-index-url https://download.pytorch.org/whl/cu113
+# Install PyTorch
+RUN echo pip3 --no-cache-dir install torch torchvision torchaudio $([ -z "$PYTORCH_EXTRA_IDX_URL" ] && echo "" || echo "--extra-index-url $PYTORCH_EXTRA_IDX_URL")
+# RUN pip3 --no-cache-dir install torch torchvision torchaudio $([ -z "$PYTORCH_EXTRA_IDX_URL" ] && echo "" || echo "--extra-index-url $PYTORCH_EXTRA_IDX_URL")
 
 # Export port for Jupyter Notebook
 EXPOSE 8888
