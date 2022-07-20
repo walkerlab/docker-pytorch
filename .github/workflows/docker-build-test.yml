@@ -55,9 +55,9 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
           build-args: |
-            UBUNTU_VER=${{ UBUNTU_VER }}
-            CUDA_VER=${{ CUDA_VER }}
-            PYTORCH_EXTRA_IDX_URL=${{ PYTORCH_EXTRA_IDX_URL }}
+            UBUNTU_VER=${{ matrix.UBUNTU_VER }}
+            CUDA_VER=${{ matrix.CUDA_VER }}
+            PYTORCH_EXTRA_IDX_URL=${{ matrix.PYTORCH_EXTRA_IDX_URL }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: false
