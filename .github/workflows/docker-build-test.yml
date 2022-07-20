@@ -16,10 +16,10 @@ jobs:
       matrix:
         UBUNTU_VER: [20.04, 22.04]
         include:
-        - CUDA_VER: 10.2.0
+        - CUDA_VER: 10.2
         - CUDA_VER: 11.3.1
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
-        - CUDA_VER: 11.6.0
+        - CUDA_VER: 11.6.1
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
     runs-on: ubuntu-latest
 
