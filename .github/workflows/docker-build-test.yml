@@ -75,6 +75,9 @@ jobs:
           build-args: |
             UBUNTU_VER=${{ matrix.UBUNTU_VER }}
             CUDA_VER=${{ matrix.CUDA_VER }}
+            TORCH_VER=${{ matrix.TORCH_VER }}
+            TORCHAUDIO_VER=${{ matrix.TORCHAUDIO_VER }}
+            TORCHVISION_VER=${{ matrix.TORCHVISION_VER }
             PYTORCH_EXTRA_IDX_URL=${{ matrix.PYTORCH_EXTRA_IDX_URL }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
