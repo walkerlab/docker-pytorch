@@ -18,11 +18,27 @@ jobs:
         - CUDA_VER: 11.3.1
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
-          PLATFORMS: linux/amd64,linux/arm64
+          ARG TORCH_VER: 1.11.0
+          ARG TORCHVISION_VER: 0.12.0
+          ARG TORCHAUDIO_VER: 0.11.0
+        - CUDA_VER: 11.3.1
+          UBUNTU_VER: 20.04
+          PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
+          ARG TORCH_VER: 1.12.0
+          ARG TORCHVISION_VER: 0.12.0
+          ARG TORCHAUDIO_VER: 0.11.0
         - CUDA_VER: 11.6.1
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
-          PLATFORMS: linux/amd64,linux/arm64
+          ARG TORCH_VER: 1.11.0
+          ARG TORCHVISION_VER: 0.12.0
+          ARG TORCHAUDIO_VER: 0.11.0
+        - CUDA_VER: 11.6.1
+          UBUNTU_VER: 20.04
+          PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
+          ARG TORCH_VER: 1.12.0
+          ARG TORCHVISION_VER: 0.12.0
+          ARG TORCHAUDIO_VER: 0.11.0
     runs-on: ubuntu-latest
 
     steps:
@@ -61,7 +77,7 @@ jobs:
             CUDA_VER=${{ matrix.CUDA_VER }}
             PYTORCH_EXTRA_IDX_URL=${{ matrix.PYTORCH_EXTRA_IDX_URL }}
           file: ./Dockerfile
-          platforms: ${{ matrix.PLATFORMS }}
+          platforms: linux/amd64,linux/arm64
           push: false
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: cuda-${{ matrix.CUDA_VER }}-pytorch-${{ TORCH_VER }}-torchvision-${{ TORCHVISION_VER }}-torchaudio-${{ TORCHAUDIO_VER }}-Ubuntu-${{ UBUNTU_VER }}
           labels: ${{ steps.meta.outputs.labels }}

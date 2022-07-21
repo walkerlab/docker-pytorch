@@ -1,8 +1,13 @@
+# Image Args
 ARG UBUNTU_VER
 ARG CUDA_VER
-ARG PYTORCH_EXTRA_IDX_URL
 
 FROM nvidia/cuda:${CUDA_VER}-devel-ubuntu${UBUNTU_VER}
+ARG TORCH_VER
+ARG TORCHVISION_VER
+ARG TORCHAUDIO_VER
+ARG PYTORCH_EXTRA_IDX_URL
+
 LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>"
 
 # Deal with pesky Python 3 encoding issue
@@ -42,25 +47,9 @@ RUN apt-get update && \
     # best practice to keep the Docker image lean
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install essential Python packages
-RUN pip3 --no-cache-dir install \
-    numpy \
-    matplotlib \
-    scipy \
-    pandas \
-    jupyter \
-    jupyterlab \
-    scikit-learn \
-    scikit-image \
-    seaborn \
-    graphviz \
-    h5py \
-    gitpython \
-    Pillow \
-    datajoint
-
 # Install PyTorch
-RUN pip3 --no-cache-dir install torch torchvision torchaudio $([ -z "$PYTORCH_EXTRA_IDX_URL" ] && echo "" || echo "--extra-index-url $PYTORCH_EXTRA_IDX_URL")
+RUN echo $TORCH_VER
+RUN pip3 --no-cache-dir install torch==$TORCH_VER torchvision==$TORCHVISION_VER torchaudio==$TORCHAUDIO_VER $([ -z "$PYTORCH_EXTRA_IDX_URL" ] && echo "" || echo "--extra-index-url $PYTORCH_EXTRA_IDX_URL")
 
 # Export port for Jupyter Notebook
 EXPOSE 8888
