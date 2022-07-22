@@ -51,13 +51,4 @@ RUN apt-get update && \
 RUN echo $TORCH_VER
 RUN pip3 --no-cache-dir install torch==$TORCH_VER torchvision==$TORCHVISION_VER torchaudio==$TORCHAUDIO_VER $([ -z "$PYTORCH_EXTRA_IDX_URL" ] && echo "" || echo "--extra-index-url $PYTORCH_EXTRA_IDX_URL")
 
-# Export port for Jupyter Notebook
-EXPOSE 8888
-
-# Add Jupyter Notebook config
-ADD ./jupyter_notebook_config.py /root/.jupyter/
-
-WORKDIR /notebooks
-
-# By default start running jupyter notebook
-ENTRYPOINT ["jupyter", "lab", "--allow-root"]
+WORKDIR /src
