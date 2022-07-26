@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - run: echo github_repo_name = $GITHUB_REPOSITORY
-      - run echo github branch name = $GITHUB_REF_NAMEGITHUB_REF_NAME
+      - run: echo github branch name = $GITHUB_REF_NAMEGITHUB_REF_NAME
       # - name: Checkout
       #   uses: actions/checkout@v2
 
