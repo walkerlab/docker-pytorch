@@ -35,11 +35,11 @@ jobs:
           TORCH_VER: 1.12.0
           TORCHVISION_VER: 0.12.0
           TORCHAUDIO_VER: 0.11.0
-          
+
     runs-on: ubuntu-latest
 
     steps:
-      run: echo $ON_MAIN_FORK_AND_BRANCH
+      - run: echo $ON_MAIN_FORK_AND_BRANCH
 
       # - name: Checkout
       #   uses: actions/checkout@v2
