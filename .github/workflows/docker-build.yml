@@ -7,7 +7,7 @@ env:
   ON_MAIN_FORK_AND_BRANCH: echo $([ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-docker" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false) # If it is from the main fork and is main branch, then push
 
 jobs:
-  docker-deploy:
+  docker-build:
     strategy:
       matrix:
         include:
@@ -35,7 +35,7 @@ jobs:
           TORCH_VER: 1.12.0
           TORCHVISION_VER: 0.12.0
           TORCHAUDIO_VER: 0.11.0
-
+          
     runs-on: ubuntu-latest
 
     steps:
