@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: set ON_MAIN_FORK_AND_BRANCH
-        run: echo "ON_MAIN_FORK_AND_BRANCH=$([ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-docker" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  1 || 0)" >> $GITHUB_ENV  # If it is from the main fork and is main branch
+        run: echo "ON_MAIN_FORK_AND_BRANCH=$([ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-docker" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo true)" >> $GITHUB_ENV  # If it is from the main fork and is main branch
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -52,7 +52,7 @@ jobs:
         uses: docker/setup-buildx-action@master
       
       - name: Login to DockerHub
-        if: env.ON_MAIN_FORK_AND_BRANCH
+        if: env.ON_MAIN_FORK_AND_BRANCH == 'true'
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -72,6 +72,6 @@ jobs:
             PYTORCH_EXTRA_IDX_URL=${{ matrix.PYTORCH_EXTRA_IDX_URL }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: env.ON_MAIN_FORK_AND_BRANCH
+          push: env.ON_MAIN_FORK_AND_BRANCH == 'true'
           tags: walkerlab/pytorch:cuda-${{ matrix.CUDA_VER }}-pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
           labels: ${{ steps.meta.outputs.labels }}
