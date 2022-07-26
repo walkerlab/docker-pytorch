@@ -50,7 +50,7 @@ jobs:
 
       
       - name: Login to DockerHub
-        if: github.GITHUB_REPOSITORY == "walkerlab/pytorch-docker"  # If it is from the main fork and is main branch, then push
+        if: github.GITHUB_REPOSITORY == 'walkerlab/pytorch-docker'  # If it is from the main fork and is main branch, then push
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
