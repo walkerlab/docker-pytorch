@@ -8,7 +8,7 @@ ARG TORCHVISION_VER
 ARG TORCHAUDIO_VER
 ARG PYTORCH_EXTRA_IDX_URL
 
-LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>"
+LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>, Daniel Sitonic <sitonic@uw.edu>"
 
 # Deal with pesky Python 3 encoding issue
 ENV LANG C.UTF-8
