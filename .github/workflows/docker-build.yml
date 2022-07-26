@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: [ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-docker" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true >> "$ON_MAIN_FORK_AND_BRANCH" || echo false >> "$ON_MAIN_FORK_AND_BRANCH") # If it is from the main fork and is main branch, then push
       - run: echo $ON_MAIN_FORK_AND_BRANCH
 
       # - name: Checkout
