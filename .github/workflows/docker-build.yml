@@ -72,6 +72,6 @@ jobs:
             PYTORCH_EXTRA_IDX_URL=${{ matrix.PYTORCH_EXTRA_IDX_URL }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: env.ON_MAIN_FORK_AND_BRANCH
+          push: [ env.ON_MAIN_FORK_AND_BRANCH == "true" ] && true || false
           tags: walkerlab/pytorch:cuda-${{ matrix.CUDA_VER }}-pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
           labels: ${{ steps.meta.outputs.labels }}
