@@ -1,5 +1,14 @@
-FROM nvidia/cuda:11.7.0-devel-ubuntu22.04
-LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>"
+# Image Args
+ARG UBUNTU_VER
+ARG CUDA_VER
+
+FROM nvidia/cuda:${CUDA_VER}-devel-ubuntu${UBUNTU_VER}
+ARG TORCH_VER
+ARG TORCHVISION_VER
+ARG TORCHAUDIO_VER
+ARG PYTORCH_EXTRA_IDX_URL
+
+LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>, Daniel Sitonic <sitonic@uw.edu>"
 
 # Deal with pesky Python 3 encoding issue
 ENV LANG C.UTF-8
@@ -38,35 +47,8 @@ RUN apt-get update && \
     # best practice to keep the Docker image lean
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install essential Python packages
-RUN pip3 --no-cache-dir install \
-    numpy \
-    matplotlib \
-    scipy \
-    pandas \
-    jupyter \
-    jupyterlab \
-    scikit-learn \
-    scikit-image \
-    seaborn \
-    graphviz \
-    h5py \
-    gitpython \
-    Pillow \
-    datajoint
+# Install PyTorch
+RUN echo $TORCH_VER
+RUN pip3 --no-cache-dir install torch==$TORCH_VER torchvision==$TORCHVISION_VER torchaudio==$TORCHAUDIO_VER $([ -z "$PYTORCH_EXTRA_IDX_URL" ] && echo "" || echo "--extra-index-url $PYTORCH_EXTRA_IDX_URL")
 
-
-RUN pip3 --no-cache-dir install \
-    torch torchvision torchaudio \
-    --extra-index-url https://download.pytorch.org/whl/cu113
-
-# Export port for Jupyter Notebook
-EXPOSE 8888
-
-# Add Jupyter Notebook config
-ADD ./jupyter_notebook_config.py /root/.jupyter/
-
-WORKDIR /notebooks
-
-# By default start running jupyter notebook
-ENTRYPOINT ["jupyter", "lab", "--allow-root"]
+WORKDIR /src
