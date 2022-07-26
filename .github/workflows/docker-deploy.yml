@@ -35,8 +35,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo github_repo_name = $GITHUB_REPOSITORY
-      - run: echo github branch name = $GITHUB_REF_NAME
+      - run: [ "$GITHUB_REPOSITORY" == "synicix/pytorch" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false
       # - name: Checkout
       #   uses: actions/checkout@v2
 
