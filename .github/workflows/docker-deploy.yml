@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: [ "$GITHUB_REPOSITORY" == "synicix/pytorch" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false
+      - run: $([ "$GITHUB_REPOSITORY" == "synicix/pytorch" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false)
       # - name: Checkout
       #   uses: actions/checkout@v2
 
