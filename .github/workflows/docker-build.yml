@@ -18,14 +18,8 @@ jobs:
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
           TORCH_VER: 1.12.0
-          TORCHVISION_VER: 0.12.0
+          TORCHVISION_VER: 0.13.0
           TORCHAUDIO_VER: 0.11.0
-        - CUDA_VER: 11.3.1
-          UBUNTU_VER: 20.04
-          PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
-          TORCH_VER: 1.12.1
-          TORCHVISION_VER: 0.13.1
-          TORCHAUDIO_VER: 0.12.1
         - CUDA_VER: 11.6.1
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
@@ -36,14 +30,8 @@ jobs:
           UBUNTU_VER: 20.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu116
           TORCH_VER: 1.12.0
-          TORCHVISION_VER: 0.12.0
+          TORCHVISION_VER: 0.13.0
           TORCHAUDIO_VER: 0.11.0
-        - CUDA_VER: 11.6.1
-          UBUNTU_VER: 20.04
-          PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu113
-          TORCH_VER: 1.12.1
-          TORCHVISION_VER: 0.13.1
-          TORCHAUDIO_VER: 0.12.1
 
     runs-on: ubuntu-latest
 
