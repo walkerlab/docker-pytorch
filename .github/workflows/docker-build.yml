@@ -37,13 +37,13 @@ jobs:
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu117
           TORCH_VER: 1.13.0
           TORCHVISION_VER: 0.13.0
-          TORCHAUDIO_VER: 0.11.0
+          TORCHAUDIO_VER: 0.14.0
         - CUDA_VER: 11.8.0
           UBUNTU_VER: 22.04
           PYTORCH_EXTRA_IDX_URL: https://download.pytorch.org/whl/cu118
           TORCH_VER: 1.13.0
           TORCHVISION_VER: 0.14.0
-          TORCHAUDIO_VER: 0.11.0
+          TORCHAUDIO_VER: 0.14.0
 
     runs-on: ubuntu-latest
 
