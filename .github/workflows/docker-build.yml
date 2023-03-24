@@ -44,8 +44,10 @@ jobs:
           TORCH_VER: 1.13.0
           TORCHVISION_VER: 0.14.0
           TORCHAUDIO_VER: 0.13.0
-
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
 
     steps:
       - name: Set ON_MAIN_FORK_AND_BRANCH
