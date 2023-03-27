@@ -51,7 +51,7 @@ jobs:
 
     steps:
       - name: Set REPO_OWNER_LC
-        run: echo "REPO_OWNER_LC=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+        run: echo "REPO_OWNER_LC=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
