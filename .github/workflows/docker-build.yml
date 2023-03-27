@@ -88,5 +88,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/$(echo ${{ github.repository_owner '[:upper:]' '[:lower:]'}} | tr )/${{ github.event.repository.name }}:cuda-${{ matrix.CUDA_VER }}-pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
+          tags: ghcr.io/$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')/${{ github.event.repository.name }}:cuda-${{ matrix.CUDA_VER }}-pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
           labels: ${{ steps.meta.outputs.labels }}
