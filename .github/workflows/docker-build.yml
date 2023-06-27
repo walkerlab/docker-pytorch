@@ -57,4 +57,4 @@
             file: ./Dockerfile
             platforms: linux/amd64,linux/arm64
             push: ${{ env.ON_MAIN_BRANCH == 'true' }}
-            tags: ghcr.io/${{ env.REPO_NAME_LC }}:cuda-${{ matrix.CUDA_VER }}-pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
+            tags: ghcr.io/${{ env.REPO_NAME_LC }}:pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
